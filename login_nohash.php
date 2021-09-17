@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Bind result variables
                     mysqli_stmt_bind_result($stmt, $id, $username, $h_password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if($password == $h_password)){
+                        if($password == $h_password){
                             // Password is correct, so start a new session
                             session_start();
                             
