@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
-	    echo $stmt;		
+	    echo "<script>alert('$stmt');</script>";		
             // Bind variables to the prepared statement as parameters
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
