@@ -21,7 +21,7 @@ function template_header($title) {
         <header>
             <div class="content-wrapper">
                 <h1 class="my-5">Hi, $title.</h1>
-                <a href="logout.php" class="btn btn-danger ml-3">Sign Out</a>
+                <a href="logout.php">Sign Out</a>
                 <nav>
 
                     <a href="index.php">Home</a>
