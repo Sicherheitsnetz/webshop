@@ -21,9 +21,6 @@ function template_header($title) {
         <header>
             <div class="content-wrapper">
                 <h1 class="my-5">Hi, $title.</h1>
-/*
-                <!--<h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our webstore.</h1> 
-*/
                 <a href="logout.php" class="btn btn-danger ml-3">Sign Out</a>
                 <nav>
 
