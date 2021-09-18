@@ -21,14 +21,15 @@ function template_header($title) {
         <header>
             <div class="content-wrapper">
                 <h1>Hi, $title.</h1>
-                <a href="logout.php">Sign Out</a>
-                <p style="text-align:center;"> 
-                <a href="index.php">Home</a>
-                <a href="index.php?page=products">Products</a>
-                </p>
-                <p style="text-align:right;"> 
-                <a href="index.php?page=cart">cart</a>
-                </p>
+                <table>
+                  <tr>
+                    <td style="text-align:left;" a href="logout.php">Sign Out</a></td>
+                    <td style="text-align:center;"> 
+                      <a href="index.php">Home</a>
+                      <a href="index.php?page=products">Products</a></td>
+                    <td style="text-align:right;" a href="index.php?page=cart">cart</a></td>
+                  </tr>
+                </table>
             </div>
         </header>
         <main>
