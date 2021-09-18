@@ -22,16 +22,9 @@ function template_header($title) {
             <div class="content-wrapper">
                 <h1>Hi, $title.</h1>
                 <a href="logout.php">Sign Out</a>
-                <nav>
-
-                    <a href="index.php">Home</a>
-                    <a href="index.php?page=products">Products</a>
-                </nav>
-                <div class="link-icons">
-                    <a href="index.php?page=cart">
-						<i class="fas fa-shopping-cart"></i>
-					</a>
-                </div>
+                <a href="index.php">Home</a>
+                <a href="index.php?page=products">Products</a>
+                <a href="index.php?page=cart">cart</a>
             </div>
         </header>
         <main>
