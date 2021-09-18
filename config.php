@@ -24,7 +24,7 @@ function template_header($title) {
 	<body>
         <header>
             <div class="content-wrapper">
-                <h1>Shopping Cart System</h1>
+                <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our webstore.</h1>
                 <nav>
                     <a href="index.php">Home</a>
                     <a href="index.php?page=products">Products</a>
