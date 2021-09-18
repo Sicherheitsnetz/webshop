@@ -2,7 +2,7 @@
 <HEAD>
 </HEAD>
 <TITLE> Webshop </TITLE>
-<BODY>
+<!--<BODY>-->
 <?php
 session_start();
 require_once "config.php";
@@ -49,7 +49,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 //header-template in config.php
-<?=template_header("username")?>
+<?=template_header(<?php echo htmlspecialchars($_SESSION["username"]); ?>)?>
 
 $result = query("select * from products");
 print"<table class='table table-bordered'>";
