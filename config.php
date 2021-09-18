@@ -25,9 +25,11 @@ function template_header($title) {
                   <tr>
 		    <td style="text-align:left;"> 
 			<a href="logout.php">Sign Out</a></td>
-                    <td style="text-align:center;"> 
+		    <td style="text-align:center;">
+		      <pre class="pre"> 
                       <a href="index.php">Home     </a>
                       <a href="index.php?page=products">Products</a></td>
+                      </pre>
 		    <td style="text-align:right;">
 			<a href="index.php?page=cart">cart</a></td>
                   </tr>
