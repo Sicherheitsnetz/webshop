@@ -21,7 +21,7 @@ function template_header($title) {
         <header>
             <div class="content-wrapper">
                 <h1>Hi, $title.</h1>
-                <table class='table table-fixed'>
+                <table class='table table-bordered'>
                   <tr>
 		    <td style="text-align:left;" data-width="33,3" data-width-unit="%"> 
 			<a href="logout.php">Sign Out</a></td>
