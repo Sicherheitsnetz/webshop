@@ -23,11 +23,13 @@ function template_header($title) {
                 <h1>Hi, $title.</h1>
                 <table>
                   <tr>
-                    <td style="text-align:left;" a href="logout.php">Sign Out</a></td>
+		    <td style="text-align:left;"> 
+			<a href="logout.php">Sign Out</a></td>
                     <td style="text-align:center;"> 
                       <a href="index.php">Home</a>
                       <a href="index.php?page=products">Products</a></td>
-                    <td style="text-align:right;" a href="index.php?page=cart">cart</a></td>
+		    <td style="text-align:right;">
+			<a href="index.php?page=cart">cart</a></td>
                   </tr>
                 </table>
             </div>
