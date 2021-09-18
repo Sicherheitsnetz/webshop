@@ -21,7 +21,7 @@ function template_header($title) {
         <header>
             <div class="content-wrapper">
                 <h1>Hi, $title.</h1>
-                <table class='table'>
+                <table class='table table-borderless'>
 		<thead>
 		  <tr>
 		     <th style="width: 33.3%"></th>
