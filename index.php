@@ -50,6 +50,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 ?>
 <!-- header-template in config.php -->
 <?=template_header(htmlspecialchars($_SESSION["username"]))?>
+<img src="pictures/musicstore.png">
 <?php
 $result = query("select * from products");
 print"<table class='table table-bordered'>";
