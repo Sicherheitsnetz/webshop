@@ -38,37 +38,7 @@ function query($query) {
 padding:20px;
 }
 </style>
-<!-- 
-<form action="insert.php" method="post">
-  <div class="col-md-4">
-    <label for="NameInput" class="form-label">Name</label>
-    <input type="text" class="form-control" name="last_name" id="NameInput" reqiuired>
-  </div>
-  <div class="col-md-4">
-    <label for="FirstNameInput" class="form-label">First Name</label>
-    <input type="text" class="form-control" name="first_name" id="FirstNameInput"required>
-  </div>
 
-  <div class="col-md-4">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="col-md-4">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" name="pwd" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <br>
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-</form> 
--->
-
-    <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our webstore.</h1>
-    <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-        <a href="logout.php" class="btn btn-danger ml-3">Sign Out of Your Account</a>
-    </p>
 
 <?php
 
@@ -77,6 +47,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login_nohash.php");
     exit;
 }
+
+//header-template in config.php
+<?=template_header("username")?>
 
 $result = query("select * from products");
 print"<table class='table table-bordered'>";
