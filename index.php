@@ -48,9 +48,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
-//header-template in config.php
+<!-- header-template in config.php -->
 <?=template_header(htmlspecialchars($_SESSION["username"]))?>
-
+<?php
 $result = query("select * from products");
 print"<table class='table table-bordered'>";
 
