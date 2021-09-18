@@ -5,7 +5,7 @@
 <!--<BODY>-->
 <?php
 session_start();
-require_once "config.php";
+include = 'config.php';
 
 /*
 $dbhost = 'localhost';
