@@ -47,7 +47,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login_nohash.php");
     exit;
 }
-
+?>
 //header-template in config.php
 <?=template_header("username")?>
 
