@@ -22,13 +22,20 @@ function template_header($title) {
             <div class="content-wrapper">
                 <h1>Hi, $title.</h1>
                 <table class='table table-bordered'>
+		<thead>
+		  <tr>
+		     <th style="width: 33.3%"></th>
+                     <th style="width: 33.3%"></th>
+                     <th style="width: 33.3%"></th>
+		  </tr>
+		</thead>			
                   <tr>
-		    <td style="text-align:left;" data-width="33.3" data-width-unit="%"> 
+		    <td style="text-align:left;"> 
 			<a href="logout.php">Sign Out</a></td>
-                    <td style="text-align:center;"i data-width="33.3" data-width-unit="%"> 
+                    <td style="text-align:center;"> 
                       <a href="index.php">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <a href="index.php?page=products">Products</a></td>
-		    <td style="text-align:right;" data-width="33.3" data-width-unit="%">
+		    <td style="text-align:right;">
 			<a href="index.php?page=cart">cart</a></td>
                   </tr>
                 </table>
