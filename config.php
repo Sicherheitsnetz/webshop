@@ -20,7 +20,7 @@ function template_header($title) {
 	<body>
         <header>
             <div class="content-wrapper">
-                <h1 class="my-5">Hi, $title.</h1>
+                <h1 class="my-3">Hi, $title.</h1>
                 <a href="logout.php">Sign Out</a>
                 <nav>
 
