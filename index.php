@@ -53,25 +53,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <img src="pictures/musicstore.png" class="img-fluid">
 <?php
 $result = query("select * from products");
-print"<table class='table table-bordered'>";
-
-print "<tr>";
-print "<th colspan=3 font size=6><center>Catalogue</center>";
-print "</tr>";
-
 while ($row = mysqli_fetch_assoc($result)) {
    $image = $row['image'];	
    $id = $row['id'];
    $product = $row['product'];
    $price = $row['price'];
+?>   
 
-print "<tr>";
-print "<td>$image <td>$product <td>$price";
-print "</tr>";
+<div class="card-deck">
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="<?=$image?>" alt="$product">
+      <div class="card-body">
+         <h5 class="card-title"><?=$product?></h5>
+         <p class="card-text">€ <?=$price?></p>
+         <a href="#" class="btn btn-primary">Add to cart</a>
+      </div>
+      </div>
+</div>
 
+<?php
 }
 
-print "</table>";
 ?>
 
 </BODY>
