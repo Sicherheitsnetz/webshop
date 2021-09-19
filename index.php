@@ -66,7 +66,7 @@ while ($row = mysqli_fetch_assoc($result)) {
    $price = $row['price'];
 
 print "<tr>";
-print "<td><img src=$image> <td>$product <td>$price";
+print "<td><img src='$image'> <td>$product <td>$price";
 print "</tr>";
 
 }
