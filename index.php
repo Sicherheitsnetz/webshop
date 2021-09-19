@@ -60,12 +60,13 @@ print "<th colspan=3 font size=6><center>Catalogue</center>";
 print "</tr>";
 
 while ($row = mysqli_fetch_assoc($result)) {
+   $image = $row['image']	
    $id = $row['id'];
    $product = $row['product'];
    $price = $row['price'];
 
 print "<tr>";
-print "<td>$id <td>$product <td>$price";
+print "<td img src='$image'> <td>$product <td>$price";
 print "</tr>";
 
 }
