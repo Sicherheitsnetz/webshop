@@ -49,6 +49,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 ?>
 <!-- header-template in config.php -->
+<?=$uid = $_SESSION["id"]?>
 <?=template_header(htmlspecialchars($_SESSION["username"]))?>
 <img src="pictures/musicstore.png" class="img-fluid">
 <?php
@@ -64,9 +65,9 @@ while ($row = mysqli_fetch_assoc($result)) {
       <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="<?=$image?>" alt="$product">
       <div class="card-body">
-         <h5 class="card-title"><?=$product?></h5>
+      <h5 class="card-title"><?=$product?> (Ord# <?=$id?>)</h5>
          <p class="card-text">€ <?=$price?></p>
-         <a href="#" class="btn btn-primary">Add to cart</a>
+         <a href="cart.php" class="btn btn-primary">Add to cart</a>
       </div>
       </div>
 </div>

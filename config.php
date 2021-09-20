@@ -19,27 +19,29 @@ function template_header($title) {
 <html>
 	<body>
         <header>
-            <div class="content-wrapper">
-                <h1>Hi, $title.</h1>
-                <table class='table table-borderless'>
-		<thead>
-		  <tr>
-		     <th style="width: 33.3%"></th>
-                     <th style="width: 33.3%"></th>
-                     <th style="width: 33.3%"></th>
-		  </tr>
-		</thead>			
-                  <tr>
-		    <td style="text-align:left;"> 
-			<a href="logout.php">Sign Out</a></td>
-                    <td style="text-align:center;"> 
-                      <a href="index.php">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <a href="index.php?page=products">Products</a></td>
-		    <td style="text-align:right;">
-			<a href="index.php?page=cart">cart</a></td>
-                  </tr>
-                </table>
-            </div>
+		<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+		   <div class="container">
+		   <a class="navbar-brand">Hi, $title</a><br>
+		   <div class="collapse navbar-collapse" id="navbarCollapse">
+		   <ul class="navbar-nav mr-auto">
+		     <li class="nav-item">
+		       <a class="nav-link" href="logout.php">Sign Out</a>
+		     </li>
+		   </ul>
+		   </div>
+		   <ul class="navbar-nav mr-auto">
+		     <li class="nav-item">
+		       <a class="nav-link" href="index.php">Home</a>
+   		     </li>
+ 		     <li class="nav-item">
+		       <a class="nav-link" href="index.php?page=products">Products</a>
+		     </li>
+		     <li class="nav-item active">
+		     <a class="nav-link" href="cart.php?data=$title">Cart</a>
+	             </li>
+		   </ul>
+ 		   </div>
+		</nav>
         </header>
         <main>
 EOT;
