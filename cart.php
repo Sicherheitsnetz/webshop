@@ -4,12 +4,8 @@
 <TITLE> Webshop - Cart </TITLE>
 
 <?php
+session_start();
 include 'config.php';
-function query($query) {
-	   global $link;
-	      $result = mysqli_query($link, $query);
-	      return $result;
-}
 
 ?>
 
@@ -18,35 +14,47 @@ function query($query) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
 
-<!-- header-template in config.php -->
-<?=template_header(htmlspecialchars($_GET['data']))?>
-<?php
-$uid = query("select id from users where username = data");
-$records = query("select * from cart where cust_id = 9");
-/*
-$ekw = query("select p.product, SUM(c.qty), p.price, SUM(c.qty*p.price) AS subtotal from cart c 
-inner join products p on c.product_id = p.id 
-inner join customers k on c.cust_id = k.id 
-where cust_id = $uid
-Group by p.id
-UNION
-select mail, SUM(menge), 0.00, SUM(subtotal)
-FROM 
-	(select k.email AS mail, c.qty AS menge, p.price, c.qty*p.price AS subtotal from cart c 
-	inner join products p on c.product_id = p.id 
-	inner join customers k on c.cust_id = k.id 
-	where cust_id = $uid) 
-AS SUM");
- */
-?>
-<table width="400" border="2" cellpadding="2" cellspacing='1'>
+<style>
+	body {
+		padding:150px;
+	}
+</style>
 
-	<tr bgcolor="#2ECCFA">
-		<th>Customer ID</th>
-		<th>Product ID</th>
-		<th>Quantity</th>
-		<th>Date</th>
+<!-- header-template in config.php -->
+<?=template_header(htmlspecialchars($_GET[data]))?>
+<?php
+$uid = $_SESSION['id'];
+
+?>
+<?php
+
+$records = query("select p.product, p.id as ordn, SUM(c.qty) as menge, p.price, SUM(c.qty*p.price) AS subtotal from cart c 
+	inner join products p on c.product_id = p.id 
+	inner join users u on c.cust_id = u.id 
+	where cust_id=$uid and bought is NULL
+	GROUP BY p.id
+	UNION
+	select NULL, NULL, NULL, NULL, SUM(subtotal) AS Sum 
+	FROM 
+		(select p.product, p.id as ordn, c.qty as menge, p.price, c.qty*p.price AS subtotal from cart c 
+		inner join products p on c.product_id = p.id 
+		inner join users u on c.cust_id = u.id 
+		where cust_id=$uid and bought is NULL) AS SUM
+	");
+	
+?>
+<table class="table">
+    <thead>
+	<tr>
+		<th scope="col">Product</th>
+		<th scope="col">Ord#</th>
+		<th scope="col">Quantity</th>
+		<th scope="col">Price/Unit</th>
+		<th scope="col">Sum</th>
+		<th scope="col">Remove</th>
 	</tr>
+    </thead>
+    <tbody>
 <!-- We use while loop to fetch data and display rows of date on html table -->
 
 <?php
@@ -54,17 +62,29 @@ AS SUM");
      while ($course = mysqli_fetch_assoc($records)){
 
            echo "<tr>";
-               echo "<td>".$course['cust_id']."</td>";
-               echo "<td>".$course['product_id']."</td>";
-	       echo "<td>".$course['qty']."</td>";
-	       echo "<td>".$course['bought']."</td>";
+	       echo "<td>".$course['product']."</td>";
+	       echo "<td>".$course['ordn']."</td>";
+               echo "<td>".$course['menge']."</td>";
+	       echo "<td>".$course['price']."</td>";
+	       echo "<td>".$course['subtotal']."</td>";
+	       echo "<td><a class='btn btn-outline-danger btn-sm' href='remove.php?prod=".$course['ordn']."'> X </a></td>";
            echo "</tr>";
 
      }
 ?>
-        </table>
+	</tbody>
+	</table>
 
+<?php
+	if(isset($_POST['buynow'])) {
+		query("UPDATE cart SET bought = now() WHERE cust_id = $uid AND bought IS NULL");
+		header("Refresh:0");
+	}
+?>
 
+<form method="post">
+	<input type="submit" name="buynow" class="btn btn-primary" value="Buy now!" />
+</form>
 
 </BODY>
 </HTML>

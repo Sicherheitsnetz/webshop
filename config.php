@@ -1,4 +1,5 @@
 <?php
+session_start();
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
 define('DB_SERVER', 'localhost');
@@ -8,11 +9,19 @@ define('DB_NAME', 'webshop');
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
+$title = $_SESSION['id']; 
 // Check connection
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
+function query($query) {
+    global $link;
+    $result = mysqli_query($link, $query);
+    return $result;
+}
+
+
 function template_header($title) {
 	echo <<<EOT
 <!DOCTYPE html>
@@ -34,7 +43,7 @@ function template_header($title) {
 		       <a class="nav-link" href="index.php">Home</a>
    		     </li>
  		     <li class="nav-item">
-		       <a class="nav-link" href="index.php?page=products">Products</a>
+		       <a class="nav-link" href="prevord.php?data=$title">Previous Orders</a>
 		     </li>
 		     <li class="nav-item active">
 		     <a class="nav-link" href="cart.php?data=$title">Cart</a>

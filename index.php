@@ -4,30 +4,15 @@
 <TITLE> Webshop </TITLE>
 <!--<BODY>-->
 <?php
+ini_set('log_errors', 1);
+ini_set('error_log', './ERROR.LOG');
+error_reporting(E_ALL);
+
 session_start();
 include 'config.php';
 
-/*
-$dbhost = 'localhost';
-$dbuser = 'admin';
-$dbpass = '1rmin';
-$dbname = 'webshop';
-
-$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-*/
-
-function query($query) {
-   global $link;
-   $result = mysqli_query($link, $query);
-   return $result;
-}
-
 ?>
 
-<!-- just another comment -->
-<!-- and one more -->
-<!-- third comment -->
-<!-- fouth comment -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
@@ -47,6 +32,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login_nohash.php");
     exit;
 }
+
+	
+
 ?>
 <!-- header-template in config.php -->
 <?=$uid = $_SESSION["id"]?>
@@ -67,7 +55,10 @@ while ($row = mysqli_fetch_assoc($result)) {
       <div class="card-body">
       <h5 class="card-title"><?=$product?> (Ord# <?=$id?>)</h5>
          <p class="card-text">€ <?=$price?></p>
-         <a href="cart.php" class="btn btn-primary">Add to cart</a>
+	 <form action="insert.php" method="POST">
+		<input type="hidden" name="prodID" value=<?=$id?>>
+	 	<input type="submit" name="submit" value="Add to cart">
+	</form>
       </div>
       </div>
 </div>
