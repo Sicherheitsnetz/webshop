@@ -1,19 +1,22 @@
 <?php
 session_start();
-/* Database credentials. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'admin');
-define('DB_PASSWORD', '1rmin');
-define('DB_NAME', 'webshop');
- 
+/* Database credentials. 
+*/
+$host = 'server328066602.mysql.database.azure.com';
+$username = 'lovingredwing8';
+$password = 'pmNvaui9ye8sGMnyhfSpwg';
+$db_name = 'flexibleserverdb';
+
+
 /* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-$title = $_SESSION['id']; 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
+$conn = mysqli_init();
+mysqli_ssl_set($conn,NULL,NULL, ".ssl/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, MYSQLI_CLIENT_SSL);
+if (mysqli_connect_errno($conn)) {
+        die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
+$link = $conn;
+$title = $_SESSION['id']; 
 
 function query($query) {
     global $link;
